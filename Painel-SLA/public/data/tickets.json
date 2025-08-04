@@ -1,0 +1,93 @@
+[
+  {
+    "id_chamado": "CHM-0123",
+    "nome_cliente": "Empresa XPTO",
+    "data_abertura": "2025-08-01T08:15:00",
+    "sla_limite": "2025-08-01T14:15:00",
+    "status": "Em andamento",
+    "analista": "Carlos Silva"
+  },
+  {
+    "id_chamado": "CHM-0124",
+    "nome_cliente": "Empresa ABC",
+    "data_abertura": "2025-07-31T15:00:00",
+    "sla_limite": "2025-08-01T15:00:00",
+    "status": "Pausado",
+    "analista": "Maria Santos"
+  },
+  {
+    "id_chamado": "CHM-0125",
+    "nome_cliente": "Empresa Tech Solutions",
+    "data_abertura": "2025-08-01T09:30:00",
+    "sla_limite": "2025-08-01T17:30:00",
+    "status": "Em andamento",
+    "analista": "Felipe Oliveira"
+  },
+  {
+    "id_chamado": "CHM-0126",
+    "nome_cliente": "Corporação Global",
+    "data_abertura": "2025-08-01T07:45:00",
+    "sla_limite": "2025-08-01T11:45:00",
+    "status": "Em andamento",
+    "analista": "Juliana Costa"
+  },
+  {
+    "id_chamado": "CHM-0127",
+    "nome_cliente": "Indústrias Inovadoras",
+    "data_abertura": "2025-08-01T06:20:00",
+    "sla_limite": "2025-08-02T10:20:00",
+    "status": "Em andamento",
+    "analista": "Roberto Almeida"
+  },
+  {
+    "id_chamado": "CHM-0128",
+    "nome_cliente": "Comércio Digital",
+    "data_abertura": "2025-07-31T16:15:00",
+    "sla_limite": "2025-08-01T12:15:00",
+    "status": "Pausado",
+    "analista": "Paula Mendes"
+  },
+  {
+    "id_chamado": "CHM-0129",
+    "nome_cliente": "Serviços Financeiros SA",
+    "data_abertura": "2025-08-01T05:00:00",
+    "sla_limite": "2025-08-01T10:00:00",
+    "status": "Em andamento",
+    "analista": "Lucas Ferreira"
+  },
+  {
+    "id_chamado": "CHM-0130",
+    "nome_cliente": "Consultoria Estratégica",
+    "data_abertura": "2025-07-31T14:30:00",
+    "sla_limite": "2025-07-31T17:30:00",
+    "status": "Fechado",
+    "analista": "Camila Rocha"
+  },
+  {
+    "id_chamado": "CHM-0131",
+    "nome_cliente": "Banco Nacional",
+    "data_abertura": "2025-07-31T09:45:00",
+    "sla_limite": "2025-07-31T15:45:00",
+    "status": "Fechado",
+    "analista": "Eduardo Vieira",
+    "teamProject": "Public.Wbc7"
+  },
+  {
+    "id_chamado": "CHM-0132",
+    "nome_cliente": "Telecom Brasil",
+    "data_abertura": "2025-08-01T10:15:00",
+    "sla_limite": "2025-08-02T10:15:00",
+    "status": "Em andamento",
+    "analista": "Mariana Costa",
+    "teamProject": "UFO.ETRM"
+  },
+  {
+    "id_chamado": "CHM-0133",
+    "nome_cliente": "Seguros Protege",
+    "data_abertura": "2025-08-01T11:30:00",
+    "sla_limite": "2025-08-01T16:30:00",
+    "status": "Em andamento",
+    "analista": "Ricardo Souza",
+    "teamProject": "SRM.wbc7srm"
+  }
+]

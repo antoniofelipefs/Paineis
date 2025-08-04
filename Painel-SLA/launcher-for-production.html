@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar SLA Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .container {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            max-width: 600px;
+        }
+        
+        h1 {
+            margin-top: 0;
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+        
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s;
+            margin-top: 20px;
+            width: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        button:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .logo {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+        
+        .status {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: rgba(0, 0, 0, 0.2);
+            display: none;
+        }
+        
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 4px solid white;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            margin: 10px auto;
+            display: none;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://paradigmabs.com.br/wp-content/uploads/2024/01/logo-paradigma-escura-small.png" alt="Paradigma Logo" class="logo">
+        <h1>Painel de Monitoramento SLA</h1>
+        <p>Clique no botão abaixo para iniciar o monitoramento dos chamados</p>
+        
+        <button id="startButton">INICIAR MONITORAMENTO</button>
+        
+        <div id="status" class="status">
+            <div id="spinner" class="spinner"></div>
+            <p id="statusText">Carregando...</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('startButton').addEventListener('click', function() {
+            const statusDiv = document.getElementById('status');
+            const statusText = document.getElementById('statusText');
+            const spinner = document.getElementById('spinner');
+            
+            // Display the loading status
+            statusDiv.style.display = 'block';
+            spinner.style.display = 'block';
+            statusText.textContent = 'Carregando o painel de monitoramento...';
+            
+            // Check connection to the API first
+            fetch('https://prod-57.eastus2.logic.azure.com:443/workflows/79e82843c76c4657908e68f53e7eb4b7/triggers/Requisicao/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FRequisicao%2Frun&sv=1.0&sig=HjkK_KMNKqd8HT5DMIBNpPmKpnnJua2feoozuclC6UM', {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // API connection successful, open the dashboard
+                    // Path correctly points to dist/index.html
+                    window.location.href = 'dist/index.html';
+                } else {
+                    // API connection failed
+                    throw new Error('Falha na conexão com a API. Verifique sua conexão de rede e tente novamente.');
+                }
+            })
+            .catch(error => {
+                statusText.textContent = error.message;
+                spinner.style.display = 'none';
+                
+                // Add a retry button
+                const retryButton = document.createElement('button');
+                retryButton.textContent = 'Tentar Novamente';
+                retryButton.addEventListener('click', function() {
+                    window.location.reload();
+                });
+                statusDiv.appendChild(retryButton);
+            });
+        });
+    </script>
+</body>
+</html>

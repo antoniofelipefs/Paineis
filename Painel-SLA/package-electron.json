@@ -1,0 +1,41 @@
+{
+  "name": "sla-dashboard",
+  "version": "1.0.0",
+  "description": "Painel de Monitoramento SLA - Paradigma",
+  "main": "sla-dashboard-electron.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "author": "Paradigma",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1"
+  },
+  "build": {
+    "appId": "com.paradigma.sladashboard",
+    "productName": "SLA Dashboard",
+    "directories": {
+      "output": "electron-dist"
+    },
+    "files": [
+      "dist/**/*",
+      "sla-dashboard-launcher.html",
+      "sla-dashboard-electron.js",
+      "/images/favicon.jpg"
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "/images/favicon.jpg"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}
