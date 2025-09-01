@@ -77,13 +77,6 @@ export function ConfigDialog({ config, onConfigChange }: ConfigDialogProps) {
       useCustomDataSource: checked
     }));
   };
-  
-  const handleRefreshIntervalChange = (value: string) => {
-    setLocalConfig(prev => ({
-      ...prev,
-      refreshInterval: parseInt(value)
-    }));
-  };
 
   const handleRiskThresholdChange = (value: string) => {
     setLocalConfig(prev => ({
@@ -196,40 +189,7 @@ export function ConfigDialog({ config, onConfigChange }: ConfigDialogProps) {
               </div>
             </div>
           )}
-
-          {/* Refresh Interval Setting */}
-          <div className="flex items-center space-x-3 rounded-lg border p-4">
-            <div className="flex-1 space-y-1">
-              <div className="flex items-center">
-                <UpdateIcon className="h-5 w-5 text-purple-500 mr-2" />
-                <p className="text-sm font-medium leading-none">
-                  Intervalo de Atualização
-                </p>
-              </div>
-              <p className="text-sm text-muted-foreground">
-                Tempo entre atualizações automáticas
-              </p>
-            </div>
-            <Select
-              value={localConfig.refreshInterval?.toString() || API_CONFIG.refreshInterval.toString()}
-              onValueChange={handleRefreshIntervalChange}
-            >
-              <SelectTrigger className="w-[120px]">
-                <SelectValue placeholder="Selecionar" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="15000">15 segundos</SelectItem>
-                <SelectItem value="30000">30 segundos</SelectItem>
-                <SelectItem value="60000">1 minuto</SelectItem>
-                <SelectItem value="120000">2 minutos</SelectItem>
-                <SelectItem value="300000">5 minutos</SelectItem>
-                <SelectItem value="600000">10 minutos</SelectItem>
-                <SelectItem value="900000">15 minutos</SelectItem>
-                <SelectItem value="1800000">30 minutos</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-
+         
           {/* Risk Threshold Setting by Days */}
           <div className="space-y-2 rounded-lg border p-4">
             <div className="flex items-center">
