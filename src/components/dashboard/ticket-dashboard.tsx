@@ -300,8 +300,9 @@ export function TicketDashboard() {
     
     // Set up interval for refreshing data using configured refresh interval
     const interval = setInterval(() => {
-      fetchTickets();
-    }, config.refreshInterval || API_CONFIG.refreshInterval);
+	fetchTickets();
+	}, 300000); // 5 minutos fixos
+
     
     // Apply dark mode to body
     if (config.darkMode) {
@@ -311,7 +312,7 @@ export function TicketDashboard() {
     }
     
     return () => clearInterval(interval);
-  }, [config.darkMode, config.useCustomDataSource, config.customDataSourceUrl, config.refreshInterval]);
+  }, [config.darkMode, config.useCustomDataSource, config.customDataSourceUrl]);
   
   // Single effect to update summary stats when enabledProjects, risk threshold, or tickets change
   useEffect(() => {
